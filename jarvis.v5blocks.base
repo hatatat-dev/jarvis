@@ -86,6 +86,22 @@
                 "motor_b_reversed": "true"
             },
             "triportSourcePort": 22
+        },
+        {
+            "port": [
+                7
+            ],
+            "name": "Expansion",
+            "customName": true,
+            "deviceType": "Motor",
+            "deviceClass": "motor",
+            "setting": {
+                "reversed": "false",
+                "fwd": "forward",
+                "rev": "reverse",
+                "gear": "ratio18_1",
+                "id": "partner"
+            }
         }
     ],
     "slot": 0,

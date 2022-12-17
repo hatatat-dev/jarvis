@@ -42,6 +42,8 @@ motor FlywheelMotorA = motor(PORT13, ratio6_1, false);
 motor FlywheelMotorB = motor(PORT14, ratio6_1, true);
 motor_group Flywheel = motor_group(FlywheelMotorA, FlywheelMotorB);
 
+motor Expansion = motor(PORT7, ratio18_1, false);
+
 
 void calibrateDrivetrain() {
   wait(200, msec);
@@ -219,7 +221,7 @@ void myblockfunction_Cat_animation() {
   Brain.Screen.setCursor(2, 1);
   Brain.Screen.clearLine(2);
   Brain.Screen.setCursor(Brain.Screen.row(), 1);
-  Brain.Screen.print("   /   o  o \\");
+  Brain.Screen.print("   /   o  o  \\");
   wait(0.5, seconds);
   Brain.Screen.setCursor(2, 1);
   Brain.Screen.clearLine(2);
@@ -244,12 +246,11 @@ void myblockfunction_Cat_animation() {
   Brain.Screen.setCursor(2, 1);
   Brain.Screen.clearLine(2);
   Brain.Screen.setCursor(Brain.Screen.row(), 1);
-  Brain.Screen.print("   /  o   o \\");
+  Brain.Screen.print("   /  o   o  \\");
 }
 
 // "when started" hat block
 int whenStarted1() {
-  // use for testing
   return 0;
 }
 
@@ -258,16 +259,51 @@ int onauton_autonomous_0() {
   Drivetrain.setDriveVelocity(100.0, percent);
   Intake.setVelocity(100.0, percent);
   Flywheel.setVelocity(100.0, percent);
+  Flywheel.spin(reverse);
   Drivetrain.drive(forward);
-  wait(0.25, seconds);
-  Intake.spinFor(forward, 60.0, degrees, true);
+  wait(0.5, seconds);
+  Intake.spinFor(forward, 90.0, degrees, true);
   Drivetrain.driveFor(reverse, 4.0, inches, true);
+  Drivetrain.turnFor(right, 45.0, degrees, true);
+  Drivetrain.driveFor(reverse, 64.0, inches, true);
+  Drivetrain.turnFor(left, 87.0, degrees, true);
+  Drivetrain.driveFor(reverse, 8.0, inches, true);
+  wait(4.0, seconds);
+  Intake.spin(reverse);
+  wait(2.0, seconds);
+  Flywheel.stop();
+  Intake.stop();
+  Driver.broadcast();
+  // old autonomous
+  Drivetrain.turnFor(left, 90.0, degrees, true);
+  Drivetrain.driveFor(forward, 24.0, inches, true);
+  Drivetrain.turnFor(right, 90.0, degrees, true);
+  Drivetrain.driveFor(reverse, 24.0, inches, true);
+  Drivetrain.turnFor(left, 35.0, degrees, true);
+  Drivetrain.driveFor(reverse, 6.0, inches, true);
+  Flywheel.spin(reverse);
+  wait(5.0, seconds);
+  Intake.spin(reverse);
+  wait(2.0, seconds);
+  Flywheel.stop();
+  Intake.stop();
+  Driver.broadcast();
   return 0;
 }
 
 // "when I receive Driver" hat block
 void onevent_Driver_0() {
-  // use while testing
+}
+
+// "when driver control" hat block
+int ondriver_drivercontrol_0() {
+  while (true) {
+    if (Controller1.ButtonY.pressing()) {
+      Expansion.spinFor(forward, 90.0, degrees, true);
+    }
+  wait(5, msec);
+  }
+  return 0;
 }
 
 // Used to find the format string for printing numbers with the
@@ -284,7 +320,8 @@ const char* printToController1_numberFormat() {
 }
 
 // "when driver control" hat block
-int ondriver_drivercontrol_0() {
+int ondriver_drivercontrol_1() {
+  // use while testing
   myblockfunction_cat();
   Flywheel.setVelocity(75.0, percent);
   Intake.setVelocity(100.0, percent);
@@ -300,8 +337,10 @@ int ondriver_drivercontrol_0() {
 void VEXcode_driver_task() {
   // Start the driver control tasks....
   vex::task drive0(ondriver_drivercontrol_0);
+vex::task drive1(ondriver_drivercontrol_1);
   while(Competition.isDriverControl() && Competition.isEnabled()) {this_thread::sleep_for(10);}
   drive0.stop();
+drive1.stop();
   return;
 }
 
