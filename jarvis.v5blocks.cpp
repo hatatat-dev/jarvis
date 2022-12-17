@@ -262,37 +262,16 @@ int onauton_autonomous_0() {
   Flywheel.spin(reverse);
   Drivetrain.drive(forward);
   wait(0.5, seconds);
-  Intake.spinFor(forward, 90.0, degrees, true);
+  Intake.spinFor(forward, 70.0, degrees, true);
   Drivetrain.driveFor(reverse, 4.0, inches, true);
-  Drivetrain.turnFor(right, 45.0, degrees, true);
-  Drivetrain.driveFor(reverse, 64.0, inches, true);
-  Drivetrain.turnFor(left, 87.0, degrees, true);
-  Drivetrain.driveFor(reverse, 8.0, inches, true);
-  wait(4.0, seconds);
-  Intake.spin(reverse);
-  wait(2.0, seconds);
-  Flywheel.stop();
-  Intake.stop();
-  Driver.broadcast();
-  // old autonomous
-  Drivetrain.turnFor(left, 90.0, degrees, true);
-  Drivetrain.driveFor(forward, 24.0, inches, true);
   Drivetrain.turnFor(right, 90.0, degrees, true);
-  Drivetrain.driveFor(reverse, 24.0, inches, true);
-  Drivetrain.turnFor(left, 35.0, degrees, true);
-  Drivetrain.driveFor(reverse, 6.0, inches, true);
-  Flywheel.spin(reverse);
-  wait(5.0, seconds);
+  wait(1.0, seconds);
   Intake.spin(reverse);
   wait(2.0, seconds);
   Flywheel.stop();
   Intake.stop();
   Driver.broadcast();
   return 0;
-}
-
-// "when I receive Driver" hat block
-void onevent_Driver_0() {
 }
 
 // "when driver control" hat block
@@ -304,6 +283,10 @@ int ondriver_drivercontrol_0() {
   wait(5, msec);
   }
   return 0;
+}
+
+// "when I receive Driver" hat block
+void onevent_Driver_0() {
 }
 
 // Used to find the format string for printing numbers with the

@@ -101,7 +101,8 @@
                 "rev": "reverse",
                 "gear": "ratio18_1",
                 "id": "partner"
-            }
+            },
+            "triportSourcePort": 22
         }
     ],
     "slot": 0,

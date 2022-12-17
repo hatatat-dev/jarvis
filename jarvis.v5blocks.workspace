@@ -485,9 +485,75 @@
 </block>
 </next>
 </block>
-<block type="v5_events_when_started" id=".NsXwU_L.OuU1l7Sho$F" deletable="false" x="-370" y="1110">
+<block type="v5_events_when_started" id=".NsXwU_L.OuU1l7Sho$F" deletable="false" x="-110" y="1191">
 </block>
-<block type="v5_events_when_autonomous" id="1HMXFxW.{9RbLP}LtPM1" x="-50" y="1110">
+<block type="v5_other_comment" id="n#/RROL%z;23X25P:vb2" x="430" y="1170">
+<value name="COMMENT">
+<shadow type="comment_text" id="yQeb6?`w7~^Qa/@^F5?H">
+<field name="comment">use for testing</field>
+</shadow>
+</value>
+<next>
+<block type="v5_control_forever" id="}sCGqB,RT)!cNw3Q29[}">
+<statement name="SUBSTACK">
+<block type="v5_looks_clear_all_rows" id="[3||(EINIab#XxW^6vuG">
+<field name="TARGET">Brain</field>
+<next>
+<block type="v5_looks_set_cursor" id="@opS+g*;!^ZlkwJ@(J#e">
+<field name="TARGET">Brain</field>
+<value name="ROW">
+<shadow type="math_whole_number" id="a*;hwkv2Z%RjnTn(*mn-">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<value name="COLUMN">
+<shadow type="math_whole_number" id="qxV{7*k:Nj=jCV7]XHa8">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block type="v5_looks_print" id="Tp~I9Z2m7}XKt7PiY`3)">
+<field name="TARGET">Brain</field>
+<field name="andsetcursortonextrow_mutator">TRUE</field>
+<value name="DATA">
+<shadow type="text" id="+.Iesn7e4~U{lN4xR!$/">
+<field name="TEXT">VEXcode</field>
+</shadow>
+<block type="v5_sensing_drive_heading" id="k0{%72H.?~73HLfY:7|W">
+</block>
+</value>
+<next>
+<block type="v5_looks_print" id="(gca;d,r!*,E7$#2[H+g">
+<field name="TARGET">Brain</field>
+<field name="andsetcursortonextrow_mutator">TRUE</field>
+<value name="DATA">
+<shadow type="text" id="HViT@B=F/Ni|R.;`dYqo">
+<field name="TEXT">VEXcode</field>
+</shadow>
+<block type="v5_sensing_drive_rotation" id="4h/};8o%VC+vW1W[a9Un">
+</block>
+</value>
+<next>
+<block type="v5_control_wait" id="~msR-0Xq+-|~YmR!h#=q">
+<value name="DURATION">
+<shadow type="math_positive_number" id="]y-FrtN^[LVNUq}5iig@">
+<field name="NUM">0.1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+<block type="v5_events_when_autonomous" id="1HMXFxW.{9RbLP}LtPM1" x="-330" y="1274">
 <next>
 <block type="v5_drivetrain_set_drive_velocity" id="x!:cgKwAH6ONq%)/a2Qm">
 <field name="UNITS">pct</field>
@@ -536,7 +602,7 @@
 <field name="anddontwait_mutator">FALSE</field>
 <value name="AMOUNT">
 <shadow type="math_number" id="dT)3h`]]m%TI0}CmwXlX">
-<field name="NUM">90</field>
+<field name="NUM">70</field>
 </shadow>
 </value>
 <next>
@@ -555,11 +621,93 @@
 <field name="anddontwait_mutator">FALSE</field>
 <value name="AMOUNT">
 <shadow type="math_number" id="9u[7,q-,BUM}mPZa%;WS">
-<field name="NUM">45</field>
+<field name="NUM">90</field>
 </shadow>
 </value>
 <next>
-<block type="v5_drivetrain_drive_for" id="M!UH7T9wbnN[wjyMxC=g">
+<block type="v5_control_wait" id="U8R^z-]AvZb;+}lW.Y/j">
+<value name="DURATION">
+<shadow type="math_positive_number" id="#F2*yNWw;;eHvCLUNhea">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin" id="@;c*ve{ZtGaZlja:jg@{">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">rev</field>
+<next>
+<block type="v5_control_wait" id="V4/A.yA^:hODHwNe%Au4">
+<value name="DURATION">
+<shadow type="math_positive_number" id="Owjr#eoS3uBB04@@qx~~">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_stop_motor" id="y4?V[%A6pKNwEs8J%K^1">
+<field name="MOTOR">Flywheel</field>
+<next>
+<block type="v5_motion_stop_motor" id="xOU6Qew_D5G~MWJm+SwR">
+<field name="MOTOR">Intake</field>
+<next>
+<block type="v5_events_broadcast" id="L|3!INpk$H4#U8dC*c!Z">
+<value name="BROADCAST_INPUT">
+<shadow type="event_broadcast_menu" id="eK.=.^:4XNTisQc(9B_X">
+<field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+<block type="v5_drivetrain_drive_for" id="a~ABLE15k9Yq{CEtp)*C" x="50" y="1310">
+<field name="DIRECTION">fwd</field>
+<field name="UNITS">in</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="AbVYuM|_!bb~IUn]%Fsa">
+<field name="NUM">24</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_turn_for" id="u6{s(RUC$B[PhgFd7{!.">
+<field name="TURNDIRECTION">right</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="1=4~95zF2VUwo,sZ/8`{">
+<field name="NUM">90</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+<block type="v5_drivetrain_drive_for" id="M!UH7T9wbnN[wjyMxC=g" x="30" y="1830">
 <field name="DIRECTION">rev</field>
 <field name="UNITS">in</field>
 <field name="anddontwait_mutator">FALSE</field>
@@ -587,39 +735,119 @@
 <field name="NUM">8</field>
 </shadow>
 </value>
+</block>
+</next>
+</block>
+</next>
+</block>
+<block type="v5_events_when_driver" id="5-+ym|kNiMr9C,E/`NKr" x="-530" y="2030">
 <next>
-<block type="v5_control_wait" id="U8R^z-]AvZb;+}lW.Y/j">
-<value name="DURATION">
-<shadow type="math_positive_number" id="#F2*yNWw;;eHvCLUNhea">
-<field name="NUM">4</field>
+<block type="v5_control_forever" id="]HI[E:BQ!#UDhtfI@{!F">
+<statement name="SUBSTACK">
+<block type="v5_control_if_then" id="Y=mM+;3xhX4iJU?+T,h}">
+<value name="CONDITION">
+<block type="v5_sensing_pressing_controller" id="]]8}#Uwl$`K02x$Om-aq">
+<field name="CONTROLLER">Controller1</field>
+<field name="BUTTON">ButtonY</field>
+</block>
+</value>
+<statement name="SUBSTACK">
+<block type="v5_motion_spin_for" id="?}1A4b$tFJ)7|Xe7!5xu">
+<field name="MOTOR">Expansion</field>
+<field name="DIRECTION">fwd</field>
+<field name="UNITS">deg</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="LY`d%70f#BSJY@y*iQ^+">
+<field name="NUM">90</field>
 </shadow>
 </value>
-<next>
-<block type="v5_motion_spin" id="@;c*ve{ZtGaZlja:jg@{">
-<field name="MOTOR">Intake</field>
-<field name="DIRECTION">rev</field>
-<next>
-<block type="v5_control_wait" id="V4/A.yA^:hODHwNe%Au4">
-<value name="DURATION">
-<shadow type="math_positive_number" id="Owjr#eoS3uBB04@@qx~~">
-<field name="NUM">2</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_stop_motor" id="y4?V[%A6pKNwEs8J%K^1">
-<field name="MOTOR">Flywheel</field>
-<next>
-<block type="v5_motion_stop_motor" id="xOU6Qew_D5G~MWJm+SwR">
-<field name="MOTOR">Intake</field>
-<next>
-<block type="v5_events_broadcast" id="L|3!INpk$H4#U8dC*c!Z">
-<value name="BROADCAST_INPUT">
-<shadow type="event_broadcast_menu" id="eK.=.^:4XNTisQc(9B_X">
+</block>
+</statement>
+</block>
+</statement>
+</block>
+</next>
+</block>
+<block type="v5_events_when_broadcasted" id="%IXXo;z!M2_|}dTJm0eO" x="670" y="2190">
 <field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
+</block>
+<block type="v5_events_when_driver" id="w{,KDbeOS-t()3pW.m?6" x="630" y="2270">
+<next>
+<block type="v5_other_comment" id="MA8o!|-X=78=ftdNljd,">
+<value name="COMMENT">
+<shadow type="comment_text" id="XoJoYBNa-YoGh`u{mLz$">
+<field name="comment">use while testing</field>
 </shadow>
 </value>
 <next>
-<block type="v5_other_comment" id="l=i^=0*F_4^Gc7ZFV44o">
+<block type="procedures_call" id="6yo38P**cCkA^93z60u#">
+<mutation proccode="cat" proceduredefid="dJ1Uy?SnSX8N_y}{aL@m" argumentids="[]" warp="false">
+</mutation>
+<next>
+<block type="v5_motion_set_motor_velocity" id="]PrN21}wvv4B[8TJiqqH">
+<field name="MOTOR">Flywheel</field>
+<field name="UNITS">pct</field>
+<value name="VELOCITY">
+<shadow type="math_number" id="ZLJz[SYS(hAnWT*[2bDC">
+<field name="NUM">75</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_set_motor_velocity" id="4vbx2u},{bi_)wKua~Q?">
+<field name="MOTOR">Intake</field>
+<field name="UNITS">pct</field>
+<value name="VELOCITY">
+<shadow type="math_number" id="IXS=moI87:*%^.f=xxBt">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block type="v5_looks_print" id="=fF6cLwS01QwCuUNzCV.">
+<field name="TARGET">Controller1</field>
+<field name="andsetcursortonextrow_mutator">FALSE</field>
+<value name="DATA">
+<shadow type="text" id="2I!1QGHV]nQI[q#B}1YN">
+<field name="TEXT">VEXcode</field>
+</shadow>
+<block type="v5_sensing_torque_of_motor" id="_{JY.5W4IuPNSXJs(b~f">
+<field name="MOTOR">Flywheel</field>
+<field name="UNITS">Nm</field>
+</block>
+</value>
+<next>
+<block type="v5_looks_print" id="B.E5I?*IJkJn^1JmZPow">
+<field name="TARGET">Brain</field>
+<field name="andsetcursortonextrow_mutator">FALSE</field>
+<value name="DATA">
+<shadow type="text" id="{_n99H64!h}^b$RyS~U{">
+<field name="TEXT">VEXcode</field>
+</shadow>
+</value>
+<next>
+<block type="v5_control_forever" id="zJdKrS)pim]q;lp}esI~">
+<statement name="SUBSTACK">
+<block type="procedures_call" id="nCZ12s,CDzHro@!,vL~y">
+<mutation proccode="Cat animation" proceduredefid="^-wqV{zr3r,3o,7R7WHi" argumentids="[]" warp="false">
+</mutation>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+<block type="v5_other_comment" id="l=i^=0*F_4^Gc7ZFV44o" x="-50" y="2410">
 <value name="COMMENT">
 <shadow type="comment_text" id="NcYvY1`CD@NE*KSgzA2H">
 <field name="comment">old autonomous</field>
@@ -729,217 +957,6 @@
 </next>
 </block>
 </next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-<block type="v5_other_comment" id="n#/RROL%z;23X25P:vb2" x="430" y="1170">
-<value name="COMMENT">
-<shadow type="comment_text" id="yQeb6?`w7~^Qa/@^F5?H">
-<field name="comment">use for testing</field>
-</shadow>
-</value>
-<next>
-<block type="v5_control_forever" id="}sCGqB,RT)!cNw3Q29[}">
-<statement name="SUBSTACK">
-<block type="v5_looks_clear_all_rows" id="[3||(EINIab#XxW^6vuG">
-<field name="TARGET">Brain</field>
-<next>
-<block type="v5_looks_set_cursor" id="@opS+g*;!^ZlkwJ@(J#e">
-<field name="TARGET">Brain</field>
-<value name="ROW">
-<shadow type="math_whole_number" id="a*;hwkv2Z%RjnTn(*mn-">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<value name="COLUMN">
-<shadow type="math_whole_number" id="qxV{7*k:Nj=jCV7]XHa8">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block type="v5_looks_print" id="Tp~I9Z2m7}XKt7PiY`3)">
-<field name="TARGET">Brain</field>
-<field name="andsetcursortonextrow_mutator">TRUE</field>
-<value name="DATA">
-<shadow type="text" id="+.Iesn7e4~U{lN4xR!$/">
-<field name="TEXT">VEXcode</field>
-</shadow>
-<block type="v5_sensing_drive_heading" id="k0{%72H.?~73HLfY:7|W">
-</block>
-</value>
-<next>
-<block type="v5_looks_print" id="(gca;d,r!*,E7$#2[H+g">
-<field name="TARGET">Brain</field>
-<field name="andsetcursortonextrow_mutator">TRUE</field>
-<value name="DATA">
-<shadow type="text" id="HViT@B=F/Ni|R.;`dYqo">
-<field name="TEXT">VEXcode</field>
-</shadow>
-<block type="v5_sensing_drive_rotation" id="4h/};8o%VC+vW1W[a9Un">
-</block>
-</value>
-<next>
-<block type="v5_control_wait" id="~msR-0Xq+-|~YmR!h#=q">
-<value name="DURATION">
-<shadow type="math_positive_number" id="]y-FrtN^[LVNUq}5iig@">
-<field name="NUM">0.1</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-</block>
-</next>
-</block>
-<block type="v5_events_when_broadcasted" id="*p!A*CQ4,%UB6A!LI=N`" x="430" y="1890">
-<field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
-</block>
-<block type="v5_events_when_driver" id="5-+ym|kNiMr9C,E/`NKr" x="-530" y="2030">
-<next>
-<block type="v5_control_forever" id="]HI[E:BQ!#UDhtfI@{!F">
-<statement name="SUBSTACK">
-<block type="v5_control_if_then" id="Y=mM+;3xhX4iJU?+T,h}">
-<value name="CONDITION">
-<block type="v5_sensing_pressing_controller" id="]]8}#Uwl$`K02x$Om-aq">
-<field name="CONTROLLER">Controller1</field>
-<field name="BUTTON">ButtonY</field>
-</block>
-</value>
-<statement name="SUBSTACK">
-<block type="v5_motion_spin_for" id="?}1A4b$tFJ)7|Xe7!5xu">
-<field name="MOTOR">Expansion</field>
-<field name="DIRECTION">fwd</field>
-<field name="UNITS">deg</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="LY`d%70f#BSJY@y*iQ^+">
-<field name="NUM">90</field>
-</shadow>
-</value>
-</block>
-</statement>
-</block>
-</statement>
-</block>
-</next>
-</block>
-<block type="v5_events_when_driver" id="w{,KDbeOS-t()3pW.m?6" x="550" y="1990">
-<next>
-<block type="v5_other_comment" id="MA8o!|-X=78=ftdNljd,">
-<value name="COMMENT">
-<shadow type="comment_text" id="XoJoYBNa-YoGh`u{mLz$">
-<field name="comment">use while testing</field>
-</shadow>
-</value>
-<next>
-<block type="procedures_call" id="6yo38P**cCkA^93z60u#">
-<mutation proccode="cat" proceduredefid="dJ1Uy?SnSX8N_y}{aL@m" argumentids="[]" warp="false">
-</mutation>
-<next>
-<block type="v5_motion_set_motor_velocity" id="]PrN21}wvv4B[8TJiqqH">
-<field name="MOTOR">Flywheel</field>
-<field name="UNITS">pct</field>
-<value name="VELOCITY">
-<shadow type="math_number" id="ZLJz[SYS(hAnWT*[2bDC">
-<field name="NUM">75</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_set_motor_velocity" id="4vbx2u},{bi_)wKua~Q?">
-<field name="MOTOR">Intake</field>
-<field name="UNITS">pct</field>
-<value name="VELOCITY">
-<shadow type="math_number" id="IXS=moI87:*%^.f=xxBt">
-<field name="NUM">100</field>
-</shadow>
-</value>
-<next>
-<block type="v5_looks_print" id="=fF6cLwS01QwCuUNzCV.">
-<field name="TARGET">Controller1</field>
-<field name="andsetcursortonextrow_mutator">FALSE</field>
-<value name="DATA">
-<shadow type="text" id="2I!1QGHV]nQI[q#B}1YN">
-<field name="TEXT">VEXcode</field>
-</shadow>
-<block type="v5_sensing_torque_of_motor" id="_{JY.5W4IuPNSXJs(b~f">
-<field name="MOTOR">Flywheel</field>
-<field name="UNITS">Nm</field>
-</block>
-</value>
-<next>
-<block type="v5_looks_print" id="B.E5I?*IJkJn^1JmZPow">
-<field name="TARGET">Brain</field>
-<field name="andsetcursortonextrow_mutator">FALSE</field>
-<value name="DATA">
-<shadow type="text" id="{_n99H64!h}^b$RyS~U{">
-<field name="TEXT">VEXcode</field>
-</shadow>
-</value>
-<next>
-<block type="v5_control_forever" id="zJdKrS)pim]q;lp}esI~">
-<statement name="SUBSTACK">
-<block type="procedures_call" id="nCZ12s,CDzHro@!,vL~y">
-<mutation proccode="Cat animation" proceduredefid="^-wqV{zr3r,3o,7R7WHi" argumentids="[]" warp="false">
-</mutation>
-</block>
-</statement>
 </block>
 </next>
 </block>
