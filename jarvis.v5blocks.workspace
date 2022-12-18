@@ -232,7 +232,7 @@
 <field name="andsetcursortonextrow_mutator">FALSE</field>
 <value name="DATA">
 <shadow type="text" id="^J:]#|rc*aXX?9;rb/b7">
-<field name="TEXT">   /   o  o  \</field>
+<field name="TEXT">   /   o   o \</field>
 </shadow>
 </value>
 <next>
@@ -485,8 +485,6 @@
 </block>
 </next>
 </block>
-<block type="v5_events_when_started" id=".NsXwU_L.OuU1l7Sho$F" deletable="false" x="-110" y="1191">
-</block>
 <block type="v5_other_comment" id="n#/RROL%z;23X25P:vb2" x="430" y="1170">
 <value name="COMMENT">
 <shadow type="comment_text" id="yQeb6?`w7~^Qa/@^F5?H">
@@ -553,7 +551,7 @@
 </block>
 </next>
 </block>
-<block type="v5_events_when_autonomous" id="1HMXFxW.{9RbLP}LtPM1" x="-330" y="1274">
+<block type="v5_events_when_autonomous" id="1HMXFxW.{9RbLP}LtPM1" x="-330" y="1290">
 <next>
 <block type="v5_drivetrain_set_drive_velocity" id="x!:cgKwAH6ONq%)/a2Qm">
 <field name="UNITS">pct</field>
@@ -686,93 +684,7 @@
 </block>
 </next>
 </block>
-<block type="v5_drivetrain_drive_for" id="a~ABLE15k9Yq{CEtp)*C" x="50" y="1310">
-<field name="DIRECTION">fwd</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="AbVYuM|_!bb~IUn]%Fsa">
-<field name="NUM">24</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_turn_for" id="u6{s(RUC$B[PhgFd7{!.">
-<field name="TURNDIRECTION">right</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="1=4~95zF2VUwo,sZ/8`{">
-<field name="NUM">90</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-<block type="v5_drivetrain_drive_for" id="M!UH7T9wbnN[wjyMxC=g" x="30" y="1830">
-<field name="DIRECTION">rev</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="/lfwwJoh.~vHVZP^#Htj">
-<field name="NUM">64</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_turn_for" id="9@gEw{Z|$6.$pMg;G:5*">
-<field name="TURNDIRECTION">left</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="xNp,1`gq6W]|p3MH0{)(">
-<field name="NUM">87</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_drive_for" id="yH~lz870g9.kc[|//-AY">
-<field name="DIRECTION">rev</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="#-4iwklm8Lxr)%rYJCRg">
-<field name="NUM">8</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-<block type="v5_events_when_driver" id="5-+ym|kNiMr9C,E/`NKr" x="-530" y="2030">
-<next>
-<block type="v5_control_forever" id="]HI[E:BQ!#UDhtfI@{!F">
-<statement name="SUBSTACK">
-<block type="v5_control_if_then" id="Y=mM+;3xhX4iJU?+T,h}">
-<value name="CONDITION">
-<block type="v5_sensing_pressing_controller" id="]]8}#Uwl$`K02x$Om-aq">
-<field name="CONTROLLER">Controller1</field>
-<field name="BUTTON">ButtonY</field>
-</block>
-</value>
-<statement name="SUBSTACK">
-<block type="v5_motion_spin_for" id="?}1A4b$tFJ)7|Xe7!5xu">
-<field name="MOTOR">Expansion</field>
-<field name="DIRECTION">fwd</field>
-<field name="UNITS">deg</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="LY`d%70f#BSJY@y*iQ^+">
-<field name="NUM">90</field>
-</shadow>
-</value>
-</block>
-</statement>
-</block>
-</statement>
-</block>
-</next>
-</block>
-<block type="v5_events_when_broadcasted" id="%IXXo;z!M2_|}dTJm0eO" x="670" y="2190">
-<field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
-</block>
-<block type="v5_events_when_driver" id="w{,KDbeOS-t()3pW.m?6" x="630" y="2270">
+<block type="v5_events_when_driver" id="w{,KDbeOS-t()3pW.m?6" x="430" y="1650">
 <next>
 <block type="v5_other_comment" id="MA8o!|-X=78=ftdNljd,">
 <value name="COMMENT">
@@ -846,6 +758,40 @@
 </next>
 </block>
 </next>
+</block>
+<block type="v5_events_when_started" id=".NsXwU_L.OuU1l7Sho$F" deletable="false" x="650" y="1670">
+</block>
+<block type="v5_events_when_driver" id="5-+ym|kNiMr9C,E/`NKr" x="-530" y="2030">
+<next>
+<block type="v5_control_forever" id="]HI[E:BQ!#UDhtfI@{!F">
+<statement name="SUBSTACK">
+<block type="v5_control_if_then" id="Y=mM+;3xhX4iJU?+T,h}">
+<value name="CONDITION">
+<block type="v5_sensing_pressing_controller" id="]]8}#Uwl$`K02x$Om-aq">
+<field name="CONTROLLER">Controller1</field>
+<field name="BUTTON">ButtonY</field>
+</block>
+</value>
+<statement name="SUBSTACK">
+<block type="v5_motion_spin_for" id="?}1A4b$tFJ)7|Xe7!5xu">
+<field name="MOTOR">Expansion</field>
+<field name="DIRECTION">fwd</field>
+<field name="UNITS">deg</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="LY`d%70f#BSJY@y*iQ^+">
+<field name="NUM">90</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+</next>
+</block>
+<block type="v5_events_when_broadcasted" id="%IXXo;z!M2_|}dTJm0eO" x="670" y="2190">
+<field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
 </block>
 <block type="v5_other_comment" id="l=i^=0*F_4^Gc7ZFV44o" x="-50" y="2410">
 <value name="COMMENT">

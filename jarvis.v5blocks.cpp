@@ -221,7 +221,7 @@ void myblockfunction_Cat_animation() {
   Brain.Screen.setCursor(2, 1);
   Brain.Screen.clearLine(2);
   Brain.Screen.setCursor(Brain.Screen.row(), 1);
-  Brain.Screen.print("   /   o  o  \\");
+  Brain.Screen.print("   /   o   o \\");
   wait(0.5, seconds);
   Brain.Screen.setCursor(2, 1);
   Brain.Screen.clearLine(2);
@@ -247,11 +247,6 @@ void myblockfunction_Cat_animation() {
   Brain.Screen.clearLine(2);
   Brain.Screen.setCursor(Brain.Screen.row(), 1);
   Brain.Screen.print("   /  o   o  \\");
-}
-
-// "when started" hat block
-int whenStarted1() {
-  return 0;
 }
 
 // "when autonomous" hat block
@@ -274,21 +269,6 @@ int onauton_autonomous_0() {
   return 0;
 }
 
-// "when driver control" hat block
-int ondriver_drivercontrol_0() {
-  while (true) {
-    if (Controller1.ButtonY.pressing()) {
-      Expansion.spinFor(forward, 90.0, degrees, true);
-    }
-  wait(5, msec);
-  }
-  return 0;
-}
-
-// "when I receive Driver" hat block
-void onevent_Driver_0() {
-}
-
 // Used to find the format string for printing numbers with the
 // desired number of decimal places
 const char* printToController1_numberFormat() {
@@ -303,7 +283,7 @@ const char* printToController1_numberFormat() {
 }
 
 // "when driver control" hat block
-int ondriver_drivercontrol_1() {
+int ondriver_drivercontrol_0() {
   // use while testing
   myblockfunction_cat();
   Flywheel.setVelocity(75.0, percent);
@@ -315,6 +295,26 @@ int ondriver_drivercontrol_1() {
   wait(5, msec);
   }
   return 0;
+}
+
+// "when started" hat block
+int whenStarted1() {
+  return 0;
+}
+
+// "when driver control" hat block
+int ondriver_drivercontrol_1() {
+  while (true) {
+    if (Controller1.ButtonY.pressing()) {
+      Expansion.spinFor(forward, 90.0, degrees, true);
+    }
+  wait(5, msec);
+  }
+  return 0;
+}
+
+// "when I receive Driver" hat block
+void onevent_Driver_0() {
 }
 
 void VEXcode_driver_task() {
