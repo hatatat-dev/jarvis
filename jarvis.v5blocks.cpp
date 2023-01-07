@@ -249,23 +249,39 @@ void myblockfunction_Cat_animation() {
   Brain.Screen.print("   /  o   o  \\");
 }
 
-// "when autonomous" hat block
-int onauton_autonomous_0() {
+// "when started" hat block
+int whenStarted1() {
   Drivetrain.setDriveVelocity(100.0, percent);
   Intake.setVelocity(100.0, percent);
   Flywheel.setVelocity(100.0, percent);
   Flywheel.spin(reverse);
   Drivetrain.drive(forward);
   wait(0.5, seconds);
-  Intake.spinFor(forward, 70.0, degrees, true);
+  Intake.spinFor(forward, 60.0, degrees, true);
   Drivetrain.driveFor(reverse, 4.0, inches, true);
-  Drivetrain.turnFor(right, 90.0, degrees, true);
+  Drivetrain.turnFor(right, 45.0, degrees, true);
+  Drivetrain.driveFor(reverse, 68.0, inches, true);
+  Drivetrain.turnFor(left, 85.0, degrees, true);
   wait(1.0, seconds);
   Intake.spin(reverse);
-  wait(2.0, seconds);
-  Flywheel.stop();
+  wait(0.25, seconds);
   Intake.stop();
+  wait(1.0, seconds);
+  Intake.spin(reverse);
+  wait(1.0, seconds);
+  Intake.stop();
+  Flywheel.stop();
   Driver.broadcast();
+  return 0;
+}
+
+// "when autonomous" hat block
+int onauton_autonomous_0() {
+  return 0;
+}
+
+// "when driver control" hat block
+int ondriver_drivercontrol_0() {
   return 0;
 }
 
@@ -282,8 +298,8 @@ const char* printToController1_numberFormat() {
   }
 }
 
-// "when driver control" hat block
-int ondriver_drivercontrol_0() {
+// "when I receive Driver" hat block
+void onevent_Driver_0() {
   // use while testing
   myblockfunction_cat();
   Flywheel.setVelocity(75.0, percent);
@@ -294,12 +310,6 @@ int ondriver_drivercontrol_0() {
     myblockfunction_Cat_animation();
   wait(5, msec);
   }
-  return 0;
-}
-
-// "when started" hat block
-int whenStarted1() {
-  return 0;
 }
 
 // "when driver control" hat block
@@ -311,10 +321,6 @@ int ondriver_drivercontrol_1() {
   wait(5, msec);
   }
   return 0;
-}
-
-// "when I receive Driver" hat block
-void onevent_Driver_0() {
 }
 
 void VEXcode_driver_task() {
