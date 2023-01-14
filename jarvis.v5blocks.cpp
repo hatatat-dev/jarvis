@@ -251,37 +251,28 @@ void myblockfunction_Cat_animation() {
 
 // "when started" hat block
 int whenStarted1() {
-  Drivetrain.setDriveVelocity(100.0, percent);
-  Intake.setVelocity(100.0, percent);
-  Flywheel.setVelocity(100.0, percent);
-  Flywheel.spin(reverse);
-  Drivetrain.drive(forward);
-  wait(0.5, seconds);
-  Intake.spinFor(forward, 60.0, degrees, true);
-  Drivetrain.driveFor(reverse, 4.0, inches, true);
-  Drivetrain.turnFor(right, 45.0, degrees, true);
-  Drivetrain.driveFor(reverse, 68.0, inches, true);
-  Drivetrain.turnFor(left, 85.0, degrees, true);
-  wait(1.0, seconds);
-  Intake.spin(reverse);
-  wait(0.25, seconds);
-  Intake.stop();
-  wait(1.0, seconds);
-  Intake.spin(reverse);
-  wait(1.0, seconds);
-  Intake.stop();
-  Flywheel.stop();
-  Driver.broadcast();
   return 0;
 }
 
 // "when autonomous" hat block
 int onauton_autonomous_0() {
-  return 0;
-}
-
-// "when driver control" hat block
-int ondriver_drivercontrol_0() {
+  Drivetrain.setDriveVelocity(100.0, percent);
+  Intake.setVelocity(100.0, percent);
+  Flywheel.setVelocity(100.0, percent);
+  Flywheel.spin(reverse);
+  // right
+  Drivetrain.driveFor(reverse, 27.0, inches, true);
+  Drivetrain.turnFor(left, 90.0, degrees, true);
+  // roller
+  Drivetrain.drive(forward);
+  wait(0.5, seconds);
+  Intake.spinFor(forward, 260.0, degrees, true);
+  Drivetrain.driveFor(reverse, 4.0, inches, true);
+  // right low goal
+  Drivetrain.turnFor(left, 90.0, degrees, true);
+  Intake.spin(reverse);
+  wait(2.0, seconds);
+  Intake.stop();
   return 0;
 }
 
@@ -298,11 +289,11 @@ const char* printToController1_numberFormat() {
   }
 }
 
-// "when I receive Driver" hat block
-void onevent_Driver_0() {
+// "when driver control" hat block
+int ondriver_drivercontrol_0() {
   // use while testing
   myblockfunction_cat();
-  Flywheel.setVelocity(75.0, percent);
+  Flywheel.setVelocity(65.0, percent);
   Intake.setVelocity(100.0, percent);
   Controller1.Screen.print(printToController1_numberFormat(), static_cast<float>(Flywheel.torque(Nm)));
   Brain.Screen.print("VEXcode");
@@ -310,6 +301,7 @@ void onevent_Driver_0() {
     myblockfunction_Cat_animation();
   wait(5, msec);
   }
+  return 0;
 }
 
 // "when driver control" hat block
@@ -351,10 +343,6 @@ int main() {
   // Calibrate the Drivetrain
   calibrateDrivetrain();
 
-  // register event handlers
-  Driver(onevent_Driver_0);
-
-  wait(15, msec);
   // post event registration
 
   // set default print color to black

@@ -5,12 +5,14 @@
 <variable type="broadcast_msg" id="WDYqa{7JJu|k^o5)03i{" islocal="false" iscloud="false" arraylength="0" arraywidth="0">message1</variable>
 <variable type="broadcast_msg" id="J10BhowH}.i;P;U=4Rbh" islocal="false" iscloud="false" arraylength="0" arraywidth="0">Driver</variable>
 </variables>
-<block type="v5_other_comment" id="f}+xw9)[069J4=d1MMyC" x="-13110" y="-10250">
+<block type="v5_other_comment" id="f}+xw9)[069J4=d1MMyC" x="-31270" y="-24750">
 <value name="COMMENT">
 <shadow type="comment_text" id="WSeqQ,Nay0;u:fItNq=R">
-<field name="comment">the distance away from the rest of the head will annoy you</field>
+<field name="comment">the distance away from the rest of the code will annoy you</field>
 </shadow>
 </value>
+</block>
+<block type="v5_events_when_started" id=".NsXwU_L.OuU1l7Sho$F" deletable="false" x="-1570" y="230">
 </block>
 <block type="procedures_definition" id="HP?XN#F5?psb1u_smq`@" x="710" y="630">
 <statement name="custom_block">
@@ -485,193 +487,6 @@
 </block>
 </next>
 </block>
-<block type="v5_events_when_started" id=".NsXwU_L.OuU1l7Sho$F" deletable="false" x="-330" y="1030">
-<next>
-<block type="v5_drivetrain_set_drive_velocity" id="x!:cgKwAH6ONq%)/a2Qm">
-<field name="UNITS">pct</field>
-<value name="VELOCITY">
-<shadow type="math_number" id="tVa.ScfAQhzMuFk@/{Wd">
-<field name="NUM">100</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_set_motor_velocity" id="1BbTJ3`l2n[XLE:dZ@t]">
-<field name="MOTOR">Intake</field>
-<field name="UNITS">pct</field>
-<value name="VELOCITY">
-<shadow type="math_number" id="i?m|nmkNV=E.9BOE#96o">
-<field name="NUM">100</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_set_motor_velocity" id="f|#C^^1jm?EyH39Sn1h]">
-<field name="MOTOR">Flywheel</field>
-<field name="UNITS">pct</field>
-<value name="VELOCITY">
-<shadow type="math_number" id="8|{!mHeJUS=q{Nk+o/4k">
-<field name="NUM">100</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_spin" id="G5Nlha^*wkDZ5:V3!z#b">
-<field name="MOTOR">Flywheel</field>
-<field name="DIRECTION">rev</field>
-<next>
-<block type="v5_drivetrain_drive" id="kab:duS5clYL/]SHh8}-">
-<field name="DIRECTION">fwd</field>
-<next>
-<block type="v5_control_wait" id="^;hvIQxW%Vf1{9}QuIM/">
-<value name="DURATION">
-<shadow type="math_positive_number" id="n#/Q~kPA-ivSEGMmVHB]">
-<field name="NUM">0.5</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_spin_for" id="4w$;9gS!TJ)b%XX_g%@~">
-<field name="MOTOR">Intake</field>
-<field name="DIRECTION">fwd</field>
-<field name="UNITS">deg</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="dT)3h`]]m%TI0}CmwXlX">
-<field name="NUM">60</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_drive_for" id="wEaBdwr)hSF0d]X{eRVp">
-<field name="DIRECTION">rev</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="BvcA]@tO`R5F0@cN,o_Y">
-<field name="NUM">4</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_turn_for" id="nhL6avHxaH.Rw#t$xDFp">
-<field name="TURNDIRECTION">right</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="9u[7,q-,BUM}mPZa%;WS">
-<field name="NUM">45</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_drive_for" id="^I0/0+%3`1sd)WOiD?Rl">
-<field name="DIRECTION">rev</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="z4[Rc$7#Z(9m^ePzoCM1">
-<field name="NUM">68</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_turn_for" id="U#fPW!bmW%_3@nsd2xgO">
-<field name="TURNDIRECTION">left</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="spk}AQNunqS}3JDA2U:v">
-<field name="NUM">85</field>
-</shadow>
-</value>
-<next>
-<block type="v5_control_wait" id="U8R^z-]AvZb;+}lW.Y/j">
-<value name="DURATION">
-<shadow type="math_positive_number" id="#F2*yNWw;;eHvCLUNhea">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_spin" id="@;c*ve{ZtGaZlja:jg@{">
-<field name="MOTOR">Intake</field>
-<field name="DIRECTION">rev</field>
-<next>
-<block type="v5_control_wait" id="V4/A.yA^:hODHwNe%Au4">
-<value name="DURATION">
-<shadow type="math_positive_number" id="Owjr#eoS3uBB04@@qx~~">
-<field name="NUM">0.25</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_stop_motor" id="xOU6Qew_D5G~MWJm+SwR">
-<field name="MOTOR">Intake</field>
-<next>
-<block type="v5_control_wait" id="4txK:W/C!_BEbT~8v}[B">
-<value name="DURATION">
-<shadow type="math_positive_number" id="?*S%]rhIF]D6n`@#ui#L">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_spin" id="G81%r-V_#1qY;eU;39?M">
-<field name="MOTOR">Intake</field>
-<field name="DIRECTION">rev</field>
-<next>
-<block type="v5_control_wait" id="2k=(|}Ib9SM!ey!qN{ip">
-<value name="DURATION">
-<shadow type="math_positive_number" id="s~*76|{x0*ZU.}f:v[XN">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_stop_motor" id="],|et4y,lfS0Qq7Q#bYm">
-<field name="MOTOR">Intake</field>
-<next>
-<block type="v5_motion_stop_motor" id="y4?V[%A6pKNwEs8J%K^1">
-<field name="MOTOR">Flywheel</field>
-<next>
-<block type="v5_events_broadcast" id="L|3!INpk$H4#U8dC*c!Z">
-<value name="BROADCAST_INPUT">
-<shadow type="event_broadcast_menu" id="eK.=.^:4XNTisQc(9B_X">
-<field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-<block type="v5_events_when_autonomous" id="1HMXFxW.{9RbLP}LtPM1" x="-510" y="1210">
-</block>
 <block type="v5_other_comment" id="n#/RROL%z;23X25P:vb2" x="430" y="1170">
 <value name="COMMENT">
 <shadow type="comment_text" id="yQeb6?`w7~^Qa/@^F5?H">
@@ -738,17 +553,343 @@
 </block>
 </next>
 </block>
-<block type="v5_events_when_driver" id="w{,KDbeOS-t()3pW.m?6" x="430" y="1650">
-</block>
-<block type="v5_control_wait" id="TP;gv+Tv9MNp)k3n0D4n" x="50" y="1730">
+<block type="v5_events_when_autonomous" id="1HMXFxW.{9RbLP}LtPM1" x="-130" y="1230">
+<next>
+<block type="v5_drivetrain_set_drive_velocity" id="x!:cgKwAH6ONq%)/a2Qm">
+<field name="UNITS">pct</field>
+<value name="VELOCITY">
+<shadow type="math_number" id="tVa.ScfAQhzMuFk@/{Wd">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_set_motor_velocity" id="1BbTJ3`l2n[XLE:dZ@t]">
+<field name="MOTOR">Intake</field>
+<field name="UNITS">pct</field>
+<value name="VELOCITY">
+<shadow type="math_number" id="i?m|nmkNV=E.9BOE#96o">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_set_motor_velocity" id="f|#C^^1jm?EyH39Sn1h]">
+<field name="MOTOR">Flywheel</field>
+<field name="UNITS">pct</field>
+<value name="VELOCITY">
+<shadow type="math_number" id="8|{!mHeJUS=q{Nk+o/4k">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin" id="G5Nlha^*wkDZ5:V3!z#b">
+<field name="MOTOR">Flywheel</field>
+<field name="DIRECTION">rev</field>
+<next>
+<block type="v5_other_comment" id="[%EW}j]A[xZDw~.+p9jE">
+<value name="COMMENT">
+<shadow type="comment_text" id="L-{F}@5bmZ#.z}^sbzgU">
+<field name="comment">right</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_drive_for" id=";EWxB9l6^Qr9.#s=3+6(">
+<field name="DIRECTION">rev</field>
+<field name="UNITS">in</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="|[6YZ;Br0n~wb)4I$WKT">
+<field name="NUM">27</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_turn_for" id="CtzFc|V+bwER35kjI-$,">
+<field name="TURNDIRECTION">left</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="syx(p~z$,3A^Nqvj)N=#">
+<field name="NUM">90</field>
+</shadow>
+</value>
+<next>
+<block type="v5_other_comment" id="}`YB%K};dZp/;!wWB-g^">
+<value name="COMMENT">
+<shadow type="comment_text" id="i-I,!Ycwohs=4R=;qLm-">
+<field name="comment">roller</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_drive" id="kab:duS5clYL/]SHh8}-">
+<field name="DIRECTION">fwd</field>
+<next>
+<block type="v5_control_wait" id="^;hvIQxW%Vf1{9}QuIM/">
 <value name="DURATION">
-<shadow type="math_positive_number" id="^l9,{x^=WV|A,hBM_LU@">
+<shadow type="math_positive_number" id="n#/Q~kPA-ivSEGMmVHB]">
+<field name="NUM">0.5</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin_for" id="4w$;9gS!TJ)b%XX_g%@~">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">fwd</field>
+<field name="UNITS">deg</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="dT)3h`]]m%TI0}CmwXlX">
+<field name="NUM">260</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_drive_for" id="wEaBdwr)hSF0d]X{eRVp">
+<field name="DIRECTION">rev</field>
+<field name="UNITS">in</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="BvcA]@tO`R5F0@cN,o_Y">
+<field name="NUM">4</field>
+</shadow>
+</value>
+<next>
+<block type="v5_other_comment" id="9*EwmILN:lcRrhV=|wI]">
+<value name="COMMENT">
+<shadow type="comment_text" id="XA]6477whbAxcBJ==kN-">
+<field name="comment">right low goal</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_turn_for" id="5/8)0G5HYJFJ_]{z7CuY">
+<field name="TURNDIRECTION">left</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="vMzfqjr7h9/fUzW#h`lJ">
+<field name="NUM">90</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin" id="#w-rdu%DQZ[!=#fm!_x#">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">rev</field>
+<next>
+<block type="v5_control_wait" id="KM)G4pI#EmP|2N[F^`LV">
+<value name="DURATION">
+<shadow type="math_positive_number" id="lB`~!IMc[3.+O7Vts%={">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_stop_motor" id="wL8Ivy[)2G6Rlha:~UCE">
+<field name="MOTOR">Intake</field>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+<block type="v5_other_comment" id="V2LTg#Icq|T]D`TfUj5-" x="-1150" y="1310">
+<value name="COMMENT">
+<shadow type="comment_text" id="/z5fJ/f(93IN8M]V!vAb">
+<field name="comment">left low goal</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_turn_for" id="evuSc_HypQ7}ZGE}Zh#.">
+<field name="TURNDIRECTION">right</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="DrYL@m/regEy(H:WIE4Z">
+<field name="NUM">90</field>
+</shadow>
+</value>
+<next>
+<block type="v5_control_wait" id="#xIFD-J-./(t+oc-oL}D">
+<value name="DURATION">
+<shadow type="math_positive_number" id="v`oVM7|6yCxr^@_1f+t;">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin" id="d5@Ydt[v|:E(n4Qz.YH$">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">rev</field>
+<next>
+<block type="v5_control_wait" id="ci:E`Np]V43z=EQ9k=FA">
+<value name="DURATION">
+<shadow type="math_positive_number" id="6s5Q6+`aMQop0AUB:M`.">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_stop_motor" id="9uB5aZ`A=VroX3J);qv,">
+<field name="MOTOR">Intake</field>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+<block type="v5_other_comment" id="iTzBSsD*|T-wT~2N}fF5" x="-750" y="1311">
+<value name="COMMENT">
+<shadow type="comment_text" id="Fh}}NqkmpTUf)iSPSc?I">
+<field name="comment">left high goal</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin_for" id="bGLJ~%|$!Qv-#Zbnz~lO">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">rev</field>
+<field name="UNITS">deg</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="h6C]}{j8{P%a{[`0[]W-">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_turn_for" id="nhL6avHxaH.Rw#t$xDFp">
+<field name="TURNDIRECTION">right</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="9u[7,q-,BUM}mPZa%;WS">
+<field name="NUM">45</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_drive_for" id="^I0/0+%3`1sd)WOiD?Rl">
+<field name="DIRECTION">rev</field>
+<field name="UNITS">in</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="z4[Rc$7#Z(9m^ePzoCM1">
+<field name="NUM">68</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_turn_for" id="U#fPW!bmW%_3@nsd2xgO">
+<field name="TURNDIRECTION">left</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="spk}AQNunqS}3JDA2U:v">
+<field name="NUM">85</field>
+</shadow>
+</value>
+<next>
+<block type="v5_drivetrain_drive_for" id="~TJ9%fM%]n%xjrJrfT)0">
+<field name="DIRECTION">rev</field>
+<field name="UNITS">in</field>
+<field name="anddontwait_mutator">FALSE</field>
+<value name="AMOUNT">
+<shadow type="math_number" id="f]bqQtLB1Nhs/Us3)g7d">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<next>
+<block type="v5_control_wait" id="U8R^z-]AvZb;+}lW.Y/j">
+<value name="DURATION">
+<shadow type="math_positive_number" id="#F2*yNWw;;eHvCLUNhea">
 <field name="NUM">1</field>
 </shadow>
 </value>
+<next>
+<block type="v5_motion_spin" id="@;c*ve{ZtGaZlja:jg@{">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">rev</field>
+<next>
+<block type="v5_control_wait" id="V4/A.yA^:hODHwNe%Au4">
+<value name="DURATION">
+<shadow type="math_positive_number" id="Owjr#eoS3uBB04@@qx~~">
+<field name="NUM">0.25</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_stop_motor" id="xOU6Qew_D5G~MWJm+SwR">
+<field name="MOTOR">Intake</field>
+<next>
+<block type="v5_control_wait" id="4txK:W/C!_BEbT~8v}[B">
+<value name="DURATION">
+<shadow type="math_positive_number" id="?*S%]rhIF]D6n`@#ui#L">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_spin" id="G81%r-V_#1qY;eU;39?M">
+<field name="MOTOR">Intake</field>
+<field name="DIRECTION">rev</field>
+<next>
+<block type="v5_control_wait" id="2k=(|}Ib9SM!ey!qN{ip">
+<value name="DURATION">
+<shadow type="math_positive_number" id="s~*76|{x0*ZU.}f:v[XN">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block type="v5_motion_stop_motor" id="],|et4y,lfS0Qq7Q#bYm">
+<field name="MOTOR">Intake</field>
+<next>
+<block type="v5_motion_stop_motor" id="y4?V[%A6pKNwEs8J%K^1">
+<field name="MOTOR">Flywheel</field>
 </block>
-<block type="v5_events_when_broadcasted" id="%IXXo;z!M2_|}dTJm0eO" x="390" y="1791">
-<field name="BROADCAST_OPTION" id="J10BhowH}.i;P;U=4Rbh" variabletype="broadcast_msg">Driver</field>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+<block type="v5_events_when_driver" id="w{,KDbeOS-t()3pW.m?6" x="710" y="1750">
 <next>
 <block type="v5_other_comment" id="MA8o!|-X=78=ftdNljd,">
 <value name="COMMENT">
@@ -766,7 +907,7 @@
 <field name="UNITS">pct</field>
 <value name="VELOCITY">
 <shadow type="math_number" id="ZLJz[SYS(hAnWT*[2bDC">
-<field name="NUM">75</field>
+<field name="NUM">65</field>
 </shadow>
 </value>
 <next>
@@ -816,43 +957,6 @@
 </next>
 </block>
 </next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-<block type="v5_drivetrain_drive_for" id="HYe@SAEHOZB,YvA_GPT}" x="-90" y="2010">
-<field name="DIRECTION">fwd</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id="Tb_VDHn#!toq8CO:^H~}">
-<field name="NUM">20</field>
-</shadow>
-</value>
-<next>
-<block type="v5_control_wait" id="$=]FWb_YhQ`CDOY7m$eS">
-<value name="DURATION">
-<shadow type="math_positive_number" id="R%YFwz6+J.WBpL?W6NH_">
-<field name="NUM">0.5</field>
-</shadow>
-</value>
-<next>
-<block type="v5_drivetrain_drive_for" id="{Be%G[Vk-apK9E@1Koou">
-<field name="DIRECTION">fwd</field>
-<field name="UNITS">in</field>
-<field name="anddontwait_mutator">FALSE</field>
-<value name="AMOUNT">
-<shadow type="math_number" id=")^2ZoY.nfd2g/@zvt|4#">
-<field name="NUM">20</field>
-</shadow>
-</value>
-<next>
-<block type="v5_motion_spin" id=":H6X/5acRbttOYuJ+=ms">
-<field name="MOTOR">Intake</field>
-<field name="DIRECTION">rev</field>
 </block>
 </next>
 </block>
