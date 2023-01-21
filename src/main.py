@@ -21,7 +21,6 @@ Flywheel_motor_b = Motor(Ports.PORT14, GearSetting.RATIO_6_1, True)
 Flywheel = MotorGroup(Flywheel_motor_a, Flywheel_motor_b)
 Expansion = Motor(Ports.PORT7, GearSetting.RATIO_18_1, False)
 
-
 # wait for rotation sensor to fully initialize
 wait(30, MSEC)
 
@@ -36,8 +35,6 @@ def calibrate_drivetrain():
         sleep(25, MSEC)
     brain.screen.clear_screen()
     brain.screen.set_cursor(1, 1)
-
-
 
 # define variables used for controlling motors based on controller inputs
 controller_1_left_shoulder_control_motors_stopped = True
@@ -140,8 +137,11 @@ test = 0
 message1 = Event()
 Driver = Event()
 
-def cat():
+def when_started1():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
+    pass
+
+def draw_cat(brain: Brain):
     brain.screen.clear_screen()
     brain.screen.set_cursor(1, 1)
     brain.screen.print("    /\\_____/\\")
@@ -159,52 +159,25 @@ def cat():
     brain.screen.print("(__(__)___(__)__)")
     brain.screen.next_row()
 
-def Cat_animation():
-    global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   / o   o   \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /  o   o  \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /   o   o \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /  o   o  \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /  -   -  \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /  o   o  \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /  -   -  \\")
-    wait(0.5, SECONDS)
-    brain.screen.set_cursor(2, 1)
-    brain.screen.clear_row(2)
-    brain.screen.set_cursor(brain.screen.row(), 1)
-    brain.screen.print("   /  o   o  \\")
+EYES_ANIMATION = [
+    "   / o   o   \\",
+    "   /  o   o  \\",
+    "   /   o   o \\",
+    "   /  o   o  \\",
+    "   /  -   -  \\",
+    "   /  o   o  \\",
+    "   /  -   -  \\",
+    "   /  o   o  \\",
+]
 
-def when_started1():
-    global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
-    pass
+def animate_cat_eyes(brain: Brain):
+    while True:
+        for eyes in EYES_ANIMATION:
+            wait(0.5, SECONDS)
+            brain.screen.clear_row(2)
+            brain.screen.set_cursor(2, 1)
+            brain.screen.print(eyes)
+
 
 def onauton_autonomous_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
@@ -229,14 +202,9 @@ def onauton_autonomous_0():
 def ondriver_drivercontrol_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
     # use while testing
-    cat()
     Flywheel.set_velocity(65, PERCENT)
     Intake.set_velocity(100, PERCENT)
     controller_1.screen.print(Flywheel.torque(TorqueUnits.NM), precision=6 if vexcode_controller_1_precision is None else vexcode_controller_1_precision)
-    brain.screen.print("VEXcode")
-    while True:
-        Cat_animation()
-        wait(5, MSEC)
 
 def ondriver_drivercontrol_1():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
@@ -245,14 +213,32 @@ def ondriver_drivercontrol_1():
             Expansion.spin_for(FORWARD, 90, DEGREES, wait=True)
         wait(5, MSEC)
 
+def cat_thread_function():
+    draw_cat(brain)
+    animate_cat_eyes(brain)
+
+def bat_thread_function():
+    brain.screen.clear_screen()
+    brain.screen.set_cursor(1, 1)
+    brain.screen.print("bat")
+    while True:
+        for indent in [1, 2, 3, 2, 1, 0]:
+            wait(0.5, SECONDS)
+            brain.screen.clear_row(1)
+            brain.screen.set_cursor(1, 1)
+            brain.screen.print(" " * indent + "bat")
+
+
 # create a function for handling the starting and stopping of all autonomous tasks
 def vexcode_auton_function():
     # Start the autonomous control tasks
     auton_task_0 = Thread( onauton_autonomous_0 )
+
     # wait for the driver control period to end
     while( competition.is_autonomous() and competition.is_enabled() ):
         # wait 10 milliseconds before checking again
         wait( 10, MSEC )
+
     # Stop the autonomous control tasks
     auton_task_0.stop()
 
@@ -260,18 +246,22 @@ def vexcode_driver_function():
     # Start the driver control tasks
     driver_control_task_0 = Thread( ondriver_drivercontrol_0 )
     driver_control_task_1 = Thread( ondriver_drivercontrol_1 )
+    driver_control_task_2 = Thread(cat_thread_function)
 
     # wait for the driver control period to end
     while( competition.is_driver_control() and competition.is_enabled() ):
         # wait 10 milliseconds before checking again
         wait( 10, MSEC )
+
     # Stop the driver control tasks
     driver_control_task_0.stop()
     driver_control_task_1.stop()
-
+    driver_control_task_2.stop()
 
 # register the competition functions
 competition = Competition( vexcode_driver_function, vexcode_auton_function )
+
+# competition = Competition(cat_thread_function, bat_thread_function)
 
 # Calibrate the Drivetrain
 calibrate_drivetrain()
