@@ -183,21 +183,26 @@ def onauton_autonomous_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
     drivetrain.set_drive_velocity(100, PERCENT)
     Intake.set_velocity(100, PERCENT)
-    Flywheel.set_velocity(100, PERCENT)
+    Flywheel.set_velocity(82, PERCENT)
     Flywheel.spin(REVERSE)
-    # right
+    # left
     drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
-    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
-    # roller
-    drivetrain.drive(FORWARD)
+    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
+    # left high goal
+    Intake.spin_for(REVERSE, 100, DEGREES, wait=True)
+    drivetrain.turn_for(RIGHT, 45, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 68, INCHES, wait=True)
+    drivetrain.turn_for(LEFT, 77, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 2, INCHES, wait=True)
     wait(0.5, SECONDS)
-    Intake.spin_for(FORWARD, 260, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
-    # right low goal
-    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
     Intake.spin(REVERSE)
-    wait(2, SECONDS)
+    wait(0.34, SECONDS)
     Intake.stop()
+    wait(1, SECONDS)
+    Intake.spin(REVERSE)
+    wait(1, SECONDS)
+    Intake.stop()
+    Flywheel.stop()
 
 def ondriver_drivercontrol_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
