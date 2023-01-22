@@ -270,36 +270,79 @@ def animate_cat_eyes(brain: Brain):
             brain.screen.set_cursor(2, 1)
             brain.screen.print(eyes)
 
-
-def onauton_autonomous_0():
-    global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
-    drivetrain.set_drive_velocity(100, PERCENT)
-    Intake.set_velocity(100, PERCENT)
-    Flywheel.set_velocity(82, PERCENT)
-    Flywheel.spin(REVERSE)
-    # left
+#def auto_left():
     drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
     drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
-    # left high goal
-    Intake.spin_for(REVERSE, 100, DEGREES, wait=True)
-    drivetrain.turn_for(RIGHT, 45, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 68, INCHES, wait=True)
-    drivetrain.turn_for(LEFT, 77, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 2, INCHES, wait=True)
+
+#def auto_right():
+    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
+    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
+
+#def auto_left_low_goal():
+#    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
+#    Intake.spin(REVERSE)
+#    wait(2, SECONDS)
+#    Intake.stop()
+
+#def auto_right_low_goal():
+#    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
+#    Intake.spin(REVERSE)
+#    wait(2, SECONDS)
+#    Intake.stop()
+
+#def auto_left_high_goal():
+#    Intake.spin_for(REVERSE, 100, DEGREES, wait=True)
+#    drivetrain.turn_for(RIGHT, 45, DEGREES, wait=True)
+#    drivetrain.drive_for(REVERSE, 68, INCHES, wait=True)
+#    drivetrain.turn_for(LEFT, 95, DEGREES, wait=True)
+#    drivetrain.drive_for(REVERSE, 2, INCHES, wait=True)
+#    wait(1, SECONDS)
+#    Intake.spin(REVERSE)
+#    wait(0.25, SECONDS)
+#    Intake.stop()
+#    wait(1, SECONDS)
+#    Intake.spin(REVERSE)
+#    wait(1, SECONDS)
+#    Intake.stop()
+#    Flywheel.stop()
+
+def auto_intro():
+    drivetrain.set_drive_velocity(95, PERCENT)
+    Intake.set_velocity(100, PERCENT)
+    Flywheel.set_velocity(80, PERCENT)
+    Flywheel.spin(REVERSE)
+
+def auto_roller():
+    drivetrain.drive(FORWARD)
     wait(0.5, SECONDS)
+    Intake.spin_for(FORWARD, 100, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
+
+def auto_left():
+    drivetrain.turn_for(LEFT, 12)
+    wait(2, SECONDS)
     Intake.spin(REVERSE)
-    wait(0.34, SECONDS)
+    wait(0.35, SECONDS)
     Intake.stop()
-    wait(1, SECONDS)
+    Intake.spin_for(FORWARD, 100)
+    Flywheel.set_velocity(100, PERCENT)
+    Flywheel.spin(REVERSE)
+    wait(3, SECONDS)
     Intake.spin(REVERSE)
     wait(1, SECONDS)
     Intake.stop()
     Flywheel.stop()
 
+def auto_full():
+    auto_intro()
+    auto_roller()
+    auto_left()
+
+
 def ondriver_drivercontrol_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
     # use while testing
-    Flywheel.set_velocity(65, PERCENT)
+    Flywheel.set_velocity(55, PERCENT)
     Intake.set_velocity(100, PERCENT)
     controller_1.screen.print(Flywheel.torque(TorqueUnits.NM), precision=6 if vexcode_controller_1_precision is None else vexcode_controller_1_precision)
 
@@ -329,7 +372,7 @@ def bat_thread_function():
 # create a function for handling the starting and stopping of all autonomous tasks
 def vexcode_auton_function():
     # Start the autonomous control tasks
-    auton_task_0 = Thread( onauton_autonomous_0 )
+    auton_task_0 = Thread( auto_full )
 
     # wait for the driver control period to end
     while( competition.is_autonomous() and competition.is_enabled() ):
