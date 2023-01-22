@@ -309,7 +309,7 @@ def animate_cat_eyes(brain: Brain):
 def auto_intro():
     drivetrain.set_drive_velocity(95, VelocityUnits.PERCENT)
     Intake.set_velocity(100, PERCENT)
-    Flywheel.set_velocity(90, PERCENT)
+    Flywheel.set_velocity(85, PERCENT)
     Flywheel.spin(REVERSE)
 
 def auto_roller():
@@ -338,9 +338,12 @@ def auto_full():
     auto_roller()
     auto_left()
 
-def auto_right():
+def auto_right_roller():
     drivetrain.drive_for(REVERSE, 24, INCHES, wait=True)
-    drivetrain.turn_for(RIGHT, 13)
+    drivetrain.turn_for(LEFT, 90)
+
+def auto_right():
+    drivetrain.turn_for(RIGHT, 11)
     wait(2, SECONDS)
     Intake.spin(REVERSE)
     wait(0.35, SECONDS)
