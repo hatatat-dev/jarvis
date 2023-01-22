@@ -1,6 +1,6 @@
 #region VEXcode Generated Robot Configuration
 from vex import *
-import urandom
+#import urandom
 
 # Brain should be defined by default
 brain=Brain()
@@ -271,12 +271,12 @@ def animate_cat_eyes(brain: Brain):
             brain.screen.print(eyes)
 
 #def auto_left():
-    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
-    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
+#    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
+#    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
 
 #def auto_right():
-    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
-    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
+#    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
+#    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
 
 #def auto_left_low_goal():
 #    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
@@ -307,9 +307,9 @@ def animate_cat_eyes(brain: Brain):
 #    Flywheel.stop()
 
 def auto_intro():
-    drivetrain.set_drive_velocity(95, PERCENT)
+    drivetrain.set_drive_velocity(95, VelocityUnits.PERCENT)
     Intake.set_velocity(100, PERCENT)
-    Flywheel.set_velocity(80, PERCENT)
+    Flywheel.set_velocity(90, PERCENT)
     Flywheel.spin(REVERSE)
 
 def auto_roller():
@@ -338,6 +338,21 @@ def auto_full():
     auto_roller()
     auto_left()
 
+def auto_right():
+    drivetrain.drive_for(REVERSE, 24, INCHES, wait=True)
+    drivetrain.turn_for(RIGHT, 13)
+    wait(2, SECONDS)
+    Intake.spin(REVERSE)
+    wait(0.35, SECONDS)
+    Intake.stop()
+    Intake.spin_for(FORWARD, 100)
+    Flywheel.set_velocity(100, PERCENT)
+    Flywheel.spin(REVERSE)
+    wait(3, SECONDS)
+    Intake.spin(REVERSE)
+    wait(1, SECONDS)
+    Intake.stop()
+    Flywheel.stop()
 
 def ondriver_drivercontrol_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
