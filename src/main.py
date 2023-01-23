@@ -270,92 +270,93 @@ def animate_cat_eyes(brain: Brain):
             brain.screen.set_cursor(2, 1)
             brain.screen.print(eyes)
 
-#def auto_left():
-#    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
-#    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
-
-#def auto_right():
-#    drivetrain.drive_for(REVERSE, 27, INCHES, wait=True)
-#    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
-
-#def auto_left_low_goal():
-#    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
-#    Intake.spin(REVERSE)
-#    wait(2, SECONDS)
-#    Intake.stop()
-
-#def auto_right_low_goal():
-#    drivetrain.turn_for(LEFT, 90, DEGREES, wait=True)
-#    Intake.spin(REVERSE)
-#    wait(2, SECONDS)
-#    Intake.stop()
-
-#def auto_left_high_goal():
-#    Intake.spin_for(REVERSE, 100, DEGREES, wait=True)
-#    drivetrain.turn_for(RIGHT, 45, DEGREES, wait=True)
-#    drivetrain.drive_for(REVERSE, 68, INCHES, wait=True)
-#    drivetrain.turn_for(LEFT, 95, DEGREES, wait=True)
-#    drivetrain.drive_for(REVERSE, 2, INCHES, wait=True)
-#    wait(1, SECONDS)
-#    Intake.spin(REVERSE)
-#    wait(0.25, SECONDS)
-#    Intake.stop()
-#    wait(1, SECONDS)
-#    Intake.spin(REVERSE)
-#    wait(1, SECONDS)
-#    Intake.stop()
-#    Flywheel.stop()
-
 def auto_intro():
     drivetrain.set_drive_velocity(95, VelocityUnits.PERCENT)
     Intake.set_velocity(100, PERCENT)
-    Flywheel.set_velocity(85, PERCENT)
+    Flywheel.set_velocity(80, PERCENT)
     Flywheel.spin(REVERSE)
 
 def auto_roller():
     drivetrain.drive(FORWARD)
     wait(0.5, SECONDS)
-    Intake.spin_for(FORWARD, 100, DEGREES, wait=True)
+    Intake.spin_for(FORWARD, 105, DEGREES, wait=True)
     drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
 
 def auto_left():
-    drivetrain.turn_for(LEFT, 12)
+    drivetrain.turn_for(LEFT, 11.5)
     wait(2, SECONDS)
     Intake.spin(REVERSE)
     wait(0.35, SECONDS)
     Intake.stop()
     Intake.spin_for(FORWARD, 100)
-    Flywheel.set_velocity(100, PERCENT)
-    Flywheel.spin(REVERSE)
-    wait(3, SECONDS)
+    wait(2, SECONDS)
     Intake.spin(REVERSE)
     wait(1, SECONDS)
+    Intake.stop()
+    Flywheel.stop()
+
+def auto_right():
+    drivetrain.turn_for(RIGHT, 12)
+    wait(2, SECONDS)
+    Intake.spin(REVERSE)
+    wait(0.35, SECONDS)
+    Intake.stop()
+    Intake.spin_for(FORWARD, 100)
+    wait(2, SECONDS)
+    Intake.spin(REVERSE)
+    wait(1, SECONDS)
+    Intake.stop()
+    Flywheel.stop()
+
+def auto_one_min():
+    auto_intro()
+    auto_roller()
+    auto_left()
+    drivetrain.turn_for(RIGHT, 12)
+    drivetrain.drive_for(REVERSE, 22, INCHES, wait=True)
+    drivetrain.turn_for(RIGHT, 90)
+    drivetrain.drive_for(FORWARD, 22, INCHES, wait=True)
+    auto_roller()
+#    drivetrain.drive_for(REVERSE, 60, INCHES, wait=True)
+#    drivetrain.turn_for(RIGHT,90, DEGREES)
+#    Intake.spin(REVERSE)
+#    drivetrain.drive_for(FORWARD, 24, INCHES, wait=True)
+#    wait(1, SECONDS)
+#    Intake.stop()
+#    drivetrain.turn_for(LEFT, 45, DEGREES)
+#    Flywheel.spin(REVERSE, 65)
+#    wait(3, SECONDS)
+#    Intake.spin(REVERSE)
+#    wait(2, SECONDS)
+#    Intake.stop()
+#
+#    drivetrain.turn
+
+def auto_right_low():
+    drivetrain.turn_for(LEFT, 90)
+    Intake.spin(REVERSE)
+    wait(2, SECONDS)
+    Intake.stop()
+    Flywheel.stop()
+
+def auto_right_roller():
+    drivetrain.drive_for(REVERSE, 26, INCHES, wait=True)
+    drivetrain.turn_for(LEFT, 90)
+
+def auto_left_low():
+    drivetrain.turn_for(RIGHT, 90)
+    wait(1, SECONDS)
+    Intake.spin(REVERSE)
+    wait(2, SECONDS)
     Intake.stop()
     Flywheel.stop()
 
 def auto_full():
     auto_intro()
     auto_roller()
-    auto_left()
+    auto_left_low()
 
-def auto_right_roller():
-    drivetrain.drive_for(REVERSE, 24, INCHES, wait=True)
-    drivetrain.turn_for(LEFT, 90)
 
-def auto_right():
-    drivetrain.turn_for(RIGHT, 11)
-    wait(2, SECONDS)
-    Intake.spin(REVERSE)
-    wait(0.35, SECONDS)
-    Intake.stop()
-    Intake.spin_for(FORWARD, 100)
-    Flywheel.set_velocity(100, PERCENT)
-    Flywheel.spin(REVERSE)
-    wait(3, SECONDS)
-    Intake.spin(REVERSE)
-    wait(1, SECONDS)
-    Intake.stop()
-    Flywheel.stop()
 
 def ondriver_drivercontrol_0():
     global myVariable, test, message1, Driver, vexcode_brain_precision, vexcode_console_precision, vexcode_controller_1_precision
