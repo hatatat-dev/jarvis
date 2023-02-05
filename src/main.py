@@ -5,22 +5,36 @@ from vex import *
 # Brain should be defined by default
 brain=Brain()
 
+# used to be
+# MOTOR_DIRECTION = True
+
+MOTOR_DIRECTION = True
+INTAKE_DIRECTION = False
+FLYWHEEL_DIRECTION = False
+EXPANSION_DIRECTION = False
+
 # Robot configuration code
 controller_1 = Controller(PRIMARY)
 controller_2 = Controller(PARTNER)
-left_motor_a = Motor(Ports.PORT20, GearSetting.RATIO_18_1, False)
-left_motor_b = Motor(Ports.PORT10, GearSetting.RATIO_18_1, False)
+left_motor_a = Motor(Ports.PORT20, GearSetting.RATIO_18_1, MOTOR_DIRECTION)
+left_motor_b = Motor(Ports.PORT10, GearSetting.RATIO_18_1, MOTOR_DIRECTION)
 left_drive_smart = MotorGroup(left_motor_a, left_motor_b)
-right_motor_a = Motor(Ports.PORT11, GearSetting.RATIO_18_1, True)
-right_motor_b = Motor(Ports.PORT1, GearSetting.RATIO_18_1, True)
+right_motor_a = Motor(Ports.PORT11, GearSetting.RATIO_18_1, not MOTOR_DIRECTION)
+right_motor_b = Motor(Ports.PORT1, GearSetting.RATIO_18_1, not MOTOR_DIRECTION)
 right_drive_smart = MotorGroup(right_motor_a, right_motor_b)
 drivetrain_inertial = Inertial(Ports.PORT8)
-drivetrain = SmartDrive(left_drive_smart, right_drive_smart, drivetrain_inertial, 319.19, 320, 255, MM, 1)
-Intake = Motor(Ports.PORT5, GearSetting.RATIO_18_1, False)
-Flywheel_motor_a = Motor(Ports.PORT13, GearSetting.RATIO_6_1, False)
-Flywheel_motor_b = Motor(Ports.PORT14, GearSetting.RATIO_6_1, True)
+
+# used to be
+# drivetrain = SmartDrive(left_drive_smart, right_drive_smart, drivetrain_inertial, 319.19, 320, 255, MM, 1)
+
+drivetrain = SmartDrive(left_drive_smart, right_drive_smart, drivetrain_inertial,
+                        wheelTravel=319.19, trackWidth=320, wheelBase=255, units=MM, externalGearRatio=5/3)
+
+Intake = Motor(Ports.PORT5, GearSetting.RATIO_18_1, INTAKE_DIRECTION)
+Flywheel_motor_a = Motor(Ports.PORT13, GearSetting.RATIO_6_1, FLYWHEEL_DIRECTION)
+Flywheel_motor_b = Motor(Ports.PORT14, GearSetting.RATIO_6_1, not FLYWHEEL_DIRECTION)
 Flywheel = MotorGroup(Flywheel_motor_a, Flywheel_motor_b)
-Expansion = Motor(Ports.PORT7, GearSetting.RATIO_18_1, False)
+Expansion = Motor(Ports.PORT7, GearSetting.RATIO_18_1, EXPANSION_DIRECTION)
 
 # wait for rotation sensor to fully initialize
 wait(30, MSEC)
@@ -308,29 +322,6 @@ def auto_right():
     Intake.stop()
     Flywheel.stop()
 
-def auto_one_min():
-    auto_intro()
-    auto_roller()
-    auto_left()
-    drivetrain.turn_for(RIGHT, 12)
-    drivetrain.drive_for(REVERSE, 22, INCHES, wait=True)
-    drivetrain.turn_for(RIGHT, 90)
-    drivetrain.drive_for(FORWARD, 22, INCHES, wait=True)
-    auto_roller()
-#    drivetrain.drive_for(REVERSE, 60, INCHES, wait=True)
-#    drivetrain.turn_for(RIGHT,90, DEGREES)
-#    Intake.spin(REVERSE)
-#    drivetrain.drive_for(FORWARD, 24, INCHES, wait=True)
-#    wait(1, SECONDS)
-#    Intake.stop()
-#    drivetrain.turn_for(LEFT, 45, DEGREES)
-#    Flywheel.spin(REVERSE, 65)
-#    wait(3, SECONDS)
-#    Intake.spin(REVERSE)
-#    wait(2, SECONDS)
-#    Intake.stop()
-#
-#    drivetrain.turn
 
 def auto_right_low():
     drivetrain.turn_for(LEFT, 90)
@@ -350,6 +341,20 @@ def auto_left_low():
     wait(2, SECONDS)
     Intake.stop()
     Flywheel.stop()
+
+
+def auto_roller_one_min():
+    drivetrain.drive(FORWARD)
+    wait(0.5, SECONDS)
+    Intake.spin_for(FORWARD, 210, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
+    drivetrain.drive_for(REVERSE, )
+
+def auto_one_min():
+    auto_intro()
+    auto_roller_one_min()
+    # drivetrain.drivefor()
+
 
 def auto_full():
     auto_intro()
