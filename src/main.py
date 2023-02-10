@@ -346,20 +346,23 @@ def auto_left_low():
 def auto_roller_one_min():
     drivetrain.drive(FORWARD)
     wait(0.5, SECONDS)
-    Intake.spin_for(FORWARD, 210, DEGREES, wait=True)
+    Intake.spin(FORWARD, 20, DEGREES, wait=True)
+    Intake.spin_for(REVERSE, 230, DEGREES, wait=True)
     drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
-    drivetrain.drive_for(REVERSE, )
 
 def auto_one_min():
     auto_intro()
     auto_roller_one_min()
-    # drivetrain.drivefor()
+    drivetrain.drive_for(REVERSE, 12, INCHES, wait=True)
+    drivetrain.turn_for(RIGHT, 90)
+    drivetrain.drive_for(REVERSE, 12, INCHES, wait=True)
 
 
 def auto_full():
-    auto_intro()
-    auto_roller()
-    auto_left_low()
+    auto_one_min()
+    # auto_intro()
+    # auto_roller()
+    # auto_left_low()
 
 
 
