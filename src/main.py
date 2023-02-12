@@ -400,6 +400,7 @@ def bat_thread_function():
 def vexcode_auton_function():
     # Start the autonomous control tasks
     auton_task_0 = Thread( auto_full )
+    auton_task_1 = Thread(cat_thread_function)
 
     # wait for the driver control period to end
     while( competition.is_autonomous() and competition.is_enabled() ):
@@ -408,6 +409,7 @@ def vexcode_auton_function():
 
     # Stop the autonomous control tasks
     auton_task_0.stop()
+    auton_task_1.stop()
 
 def vexcode_driver_function():
     # Start the driver control tasks
