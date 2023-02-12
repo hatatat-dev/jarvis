@@ -186,7 +186,7 @@ def rc_auto_loop_function_controller_2():
                     # tell the code that the right motor has been stopped
                     drivetrain_r_needs_to_be_stopped_controller_2 = False
             else:
-                # reset the toggle so that the deadband code knows to stop the right motor next
+                # reset the toggle  so that the deadband code knows to stop the right motor next
                 # time the input is in the deadband range
                 drivetrain_r_needs_to_be_stopped_controller_2 = True
             
@@ -343,13 +343,13 @@ def auto_left_low():
 
 
 def auto_roller_one_min():
-    Intake.spin(FORWARD, 20, DEGREES, wait=True)
-    Intake.spin_for(REVERSE, 180, DEGREES, wait=True)
+    wait(0.5, SECONDS)
+    drivetrain.drive_for(FORWARD, 4, INCHES, wait=True)
+    Intake.spin_for(FORWARD, 400, DEGREES, wait=True)
     drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
 
 def auto_one_min():
     auto_intro()
-    # auto_roller_one_min()
     # drivetrain.drive_for(REVERSE, 12, INCHES, wait=True)
     # drivetrain.turn_for(RIGHT, 90)
     # drivetrain.drive_for(REVERSE, 12, INCHES, wait=True)
@@ -358,7 +358,8 @@ def auto_one_min():
 def auto_full():
     # auto_one_min()
     auto_intro()
-    auto_roller()
+    auto_roller_one_min()
+    # auto_roller()
     auto_left_low()
 
 
