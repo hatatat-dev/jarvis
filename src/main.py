@@ -8,7 +8,7 @@ brain=Brain()
 # used to be
 # MOTOR_DIRECTION = True
 
-MOTOR_DIRECTION = True
+MOTOR_DIRECTION = False
 INTAKE_DIRECTION = False
 FLYWHEEL_DIRECTION = False
 EXPANSION_DIRECTION = False
@@ -136,6 +136,8 @@ def rc_auto_loop_function_controller_1():
                 # set the toggle so that we don't constantly tell the motor to stop when
                 # the buttons are released
                 controller_1_right_shoulder_control_motors_stopped = True
+            if controller_1.buttonRight.pressing():
+                Expansion.spin(REVERSE)
         # wait before repeating the process
         wait(20, MSEC)
 
@@ -285,13 +287,13 @@ def animate_cat_eyes(brain: Brain):
             brain.screen.print(eyes)
 
 def auto_intro():
-    drivetrain.set_drive_velocity(95, VelocityUnits.PERCENT)
+    drivetrain.set_drive_velocity(100, VelocityUnits.PERCENT)
     Intake.set_velocity(100, PERCENT)
     Flywheel.set_velocity(80, PERCENT)
     Flywheel.spin(REVERSE)
 
 def auto_roller():
-    wait(0.5, SECONDS)
+    drivetrain.drive_for(FORWARD, 2, INCHES, wait=True)
     Intake.spin_for(FORWARD, 300, DEGREES, wait=True)
     drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
 
@@ -330,14 +332,13 @@ def auto_right_low():
     Flywheel.stop()
 
 def auto_right_roller():
-    drivetrain.drive_for(REVERSE, 26, INCHES, wait=True)
+    drivetrain.drive_for(REVERSE, 24, INCHES, wait=True)
     drivetrain.turn_for(LEFT, 90)
 
 def auto_left_low():
     drivetrain.turn_for(RIGHT, 90)
-    wait(1, SECONDS)
     Intake.spin(REVERSE)
-    wait(2, SECONDS)
+    wait(1, SECONDS)
     Intake.stop()
     Flywheel.stop()
 
@@ -347,20 +348,48 @@ def auto_roller_one_min():
     drivetrain.drive_for(FORWARD, 4, INCHES, wait=True)
     Intake.spin_for(FORWARD, 400, DEGREES, wait=True)
     drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
+def auto_second_roller():
+    drivetrain.drive_for(FORWARD, 23, INCHES, wait=True)
+    auto_roller_one_min()
 
+# DONT USE THIS!!!
 def auto_one_min():
+    # ONE MIN AUTON
     auto_intro()
-    # drivetrain.drive_for(REVERSE, 12, INCHES, wait=True)
+    auto_roller_one_min()
+    auto_left_low
+    drivetrain.turn_for(LEFT, 90)
+    drivetrain.drive_for(REVERSE, 24, INCHES, wait=True)
+    drivetrain.turn_for(LEFT, 90)
+    auto_second_roller()
+    # auto_roller()
+    # auto_left_low()
+
+    wait(5, SECONDS)
+    Expansion.spin_for(FORWARD, 90, DEGREES, wait=True)
+
+
+
+    # drivetrain.drive_for(REVERSE, 22, INCHES, wait=True)
     # drivetrain.turn_for(RIGHT, 90)
-    # drivetrain.drive_for(REVERSE, 12, INCHES, wait=True)
+    # drivetrain.drive_for(FORWARD, 24, INCHES, wait=True)
+    # auto_roller()
 
 
 def auto_full():
-    # auto_one_min()
-    auto_intro()
-    auto_roller_one_min()
+    # ONE MIN AUTON
+    auto_one_min()
+
+
+    # # RUN THE CODE BELOW FOR REGULAR MATCH AUTON
+    # auto_intro()
     # auto_roller()
-    auto_left_low()
+    # auto_left_low()
+
+
+
+
+    
 
 
 
