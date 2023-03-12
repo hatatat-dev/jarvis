@@ -292,6 +292,14 @@ def auto_intro():
     Flywheel.set_velocity(80, PERCENT)
     Flywheel.spin(REVERSE)
 
+
+def auto_intro_skills():
+    drivetrain.set_drive_velocity(100, VelocityUnits.PERCENT)
+    Intake.set_velocity(100, PERCENT)
+    Flywheel.set_velocity(55, PERCENT)
+    Flywheel.spin(REVERSE)
+
+
 def auto_roller():
     drivetrain.drive_for(FORWARD, 2, INCHES, wait=True)
     Intake.spin_for(FORWARD, 300, DEGREES, wait=True)
@@ -342,31 +350,47 @@ def auto_left_low():
     Intake.stop()
     Flywheel.stop()
 
+def auto_left_high_skills():
+    # drivetrain.turn_for(RIGHT, 74)
+    # Intake.spin(REVERSE)
+    # wait(1.5, SECONDS)
+    # Intake.stop()
+    # Flywheel.stop()
+
+    wait(2, SECONDS)
+    Intake.spin(REVERSE)
+    wait(1.5, SECONDS)
+    Intake.stop()
+    Flywheel.stop()
+
 
 def auto_roller_one_min():
     wait(0.5, SECONDS)
     drivetrain.drive_for(FORWARD, 4, INCHES, wait=True)
     Intake.spin_for(FORWARD, 400, DEGREES, wait=True)
     drivetrain.drive_for(REVERSE, 4, INCHES, wait=True)
+
+
 def auto_second_roller():
-    drivetrain.drive_for(FORWARD, 23, INCHES, wait=True)
+    drivetrain.drive_for(FORWARD, 37, INCHES, wait=True)
     auto_roller_one_min()
 
-# DONT USE THIS!!!
 def auto_one_min():
     # ONE MIN AUTON
-    auto_intro()
-    auto_roller_one_min()
-    auto_left_low
-    drivetrain.turn_for(LEFT, 90)
-    drivetrain.drive_for(REVERSE, 24, INCHES, wait=True)
-    drivetrain.turn_for(LEFT, 90)
-    auto_second_roller()
-    # auto_roller()
-    # auto_left_low()
+    auto_intro_skills()
+    # auto_roller_one_min()
+    drivetrain.turn_for(LEFT, 5, wait = True)
+    auto_left_high_skills()
 
-    wait(5, SECONDS)
-    Expansion.spin_for(FORWARD, 90, DEGREES, wait=True)
+    # drivetrain.turn_for(LEFT, 82)
+    # drivetrain.drive_for(REVERSE, 35, INCHES, wait=True)
+    # drivetrain.turn_for(RIGHT, 80)
+    # auto_second_roller()
+    # # auto_roller()
+    # # auto_left_low()
+
+    # wait(5, SECONDS)
+    # Expansion.spin_for(FORWARD, 90, DEGREES, wait=True)
 
 
 
