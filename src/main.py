@@ -351,6 +351,8 @@ def auto_left_low():
     Flywheel.stop()
 
 def auto_left_high_skills():
+    drivetrain.turn_for(LEFT, 7, wait = True)
+
     # drivetrain.turn_for(RIGHT, 74)
     # Intake.spin(REVERSE)
     # wait(1.5, SECONDS)
@@ -362,6 +364,9 @@ def auto_left_high_skills():
     wait(1.5, SECONDS)
     Intake.stop()
     Flywheel.stop()
+    drivetrain.turn_for(RIGHT, 7, wait = True)
+    drivetrain.drive_for(FORWARD, 75, INCHES, wait = True)
+    drivetrain.turn_for(LEFT, 90, DEGREES, wait = True)
 
 
 def auto_roller_one_min():
@@ -379,13 +384,17 @@ def auto_one_min():
     # ONE MIN AUTON
     auto_intro_skills()
     # auto_roller_one_min()
-    drivetrain.turn_for(LEFT, 5, wait = True)
+    drivetrain.turn_for(LEFT, 10, wait = True)
     auto_left_high_skills()
+    auto_roller_one_min()
 
-    # drivetrain.turn_for(LEFT, 82)
-    # drivetrain.drive_for(REVERSE, 35, INCHES, wait=True)
-    # drivetrain.turn_for(RIGHT, 80)
-    # auto_second_roller()
+    drivetrain.turn_for(LEFT, 82)
+    drivetrain.drive_for(REVERSE, 35, INCHES, wait=True)
+    drivetrain.turn_for(RIGHT, 80)
+    drivetrain.drive_for(REVERSE, 22, INCHES, wait=True)
+    drivetrain.turn_for(RIGHT, 90, DEGREES, wait=True)
+    auto_roller_one_min()
+    Expansion.spin_for(FORWARD, 90, DEGREES, wait=True)
     # # auto_roller()
     # # auto_left_low()
 
